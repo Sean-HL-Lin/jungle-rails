@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-  end
+    # @items = LineItem.joins("JOIN orders ON orders.id =line_items.order_id WHERE orders.id = #{params[:id]}")
+    # @items = LineItem.joins("JOIN products ON products.id =line_items.product_id")
+    
+    p @items
+  end 
 
   def create
     charge = perform_stripe_charge
